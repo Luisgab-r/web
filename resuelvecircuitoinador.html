@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Circuitos Eléctricos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Calculadora de Circuitos Eléctricos</h1>
+        <nav>
+            <ul>
+                <li><a href="#series"><i class="fas fa-bolt"></i> Circuito Serie <i class="fas fa-info-circle" onclick="toggleInfo('series-info')"></i></a></li>
+                <li><a href="#parallel"><i class="fas fa-bolt"></i> Circuito Paralelo <i class="fas fa-info-circle" onclick="toggleInfo('parallel-info')"></i></a></li>
+                <li><a href="#mixed"><i class="fas fa-bolt"></i> Circuito Mixto <i class="fas fa-info-circle" onclick="toggleInfo('mixed-info')"></i></a></li>
+                <li><a href="https://jdelectricos.com.co/tipos-circuitos-electricos/">Guía de Circuitos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="series">
+            <h2>Circuito Serie</h2>
+            <p id="series-info" class="info">
+                Un circuito serie es aquel en el que las resistencias están conectadas una después de otra, de modo que la corriente que fluye a través de una resistencia también fluye a través de las otras en la misma secuencia.
+            </p>
+            <form id="series-form">
+                <label for="series-voltage">Voltaje (V):</label>
+                <input type="number" id="series-voltage" required>
+                
+                <label for="series-resistances">Número de Resistencias:</label>
+                <input type="number" id="series-resistances" required>
+                
+                <div id="series-resistance-values"></div>
+                
+                <button type="button" onclick="calculateSeries()">Calcular</button>
+            </form>
+            <div id="series-result"></div>
+        </section>
+        <section id="parallel">
+            <h2>Circuito Paralelo</h2>
+            <p id="parallel-info" class="info">
+                En un circuito paralelo, las resistencias están conectadas de tal manera que cada resistencia está conectada entre los mismos dos puntos de potencial eléctrico, permitiendo que la corriente se divida entre las ramas paralelas.
+            </p>
+            <form id="parallel-form">
+                <label for="parallel-voltage">Voltaje (V):</label>
+                <input type="number" id="parallel-voltage" required>
+                
+                <label for="parallel-resistances">Número de Resistencias:</label>
+                <input type="number" id="parallel-resistances" required>
+                
+                <div id="parallel-resistance-values"></div>
+                
+                <button type="button" onclick="calculateParallel()">Calcular</button>
+            </form>
+            <div id="parallel-result"></div>
+        </section>
+        <section id="mixed">
+            <h2>Circuito Mixto</h2>
+            <p id="mixed-info" class="info">
+                Un circuito mixto combina elementos de circuitos serie y paralelo. Puede ser más complejo de resolver, ya que implica utilizar las Leyes de Ohm y posiblemente las Leyes de Kirchhoff para calcular voltajes, corrientes y resistencias totales.
+            </p>
+            <form id="mixed-form">
+                <label for="mixed-voltage">Voltaje (V):</label>
+                <input type="number" id="mixed-voltage" required>
+                
+                <label for="mixed-resistances">Número de Resistencias:</label>
+                <input type="number" id="mixed-resistances" required>
+                
+                <div id="mixed-resistance-values"></div>
+                
+                <button type="button" onclick="calculateMixed()">Calcular</button>
+            </form>
+            <div id="mixed-result"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Calculadora de Circuitos Eléctricos. Todos los derechos reservados.</p>
+        <div class="contact" id="contact">
+            <h3>Contacto</h3>
+            <p>Correo: <a href="mailto:info@circuitos.com">info@circuitos.com</a></p>
+        </div>
+    </footer>
+    <script>
+        function toggleInfo(id) {
+            const info = document.getElementById(id);
+            info.classList.toggle('show');
+        }
+
+        function openCircuitGuide() {
+            window.open('circuit_guide.html', '_blank');
+        }
+    </script>
+</body>
+</html>
